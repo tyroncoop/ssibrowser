@@ -5,7 +5,7 @@ import {
 } from '../../constants/tyron';
 import { DOMAINS } from '../../constants/domains';
 import { fetchAddr, isValidUsername, resolve } from './utils';
-import { PublicIdentity, BuyNFTUsername, DIDxWallet, XPoints } from '../index';
+import { PublicIdentity, BuyNFTUsername, DIDxWallet, XPoints, VerifiableCredentials } from '../index';
 import styles from './styles.module.scss';
 import { updateUser } from 'src/store/user';
 import { useStore } from 'effector-react';
@@ -36,6 +36,7 @@ function Component() {
     const [domain, setDomain] = useState('');
     const [exists, setIdentity] = useState(false);
     const [xpoints, setXpoints] = useState(false);
+    const [vc, setVC] = useState(false);
 
     const spinner = (
         <i className="fa fa-lg fa-spin fa-circle-notch" aria-hidden="true"></i>
@@ -45,7 +46,7 @@ function Component() {
         currentTarget: { value }
     }: React.ChangeEvent<HTMLInputElement>) => {
         setError(''); updateLoggedIn(null); updateDonation(null); updateContract(null);
-        setXpoints(false);
+        setXpoints(false); setVC(false);
         updateIsAdmin({
             verified: false,
             hideWallet: true,
@@ -161,7 +162,7 @@ function Component() {
                         })
                         switch (domain) {
                             case DOMAINS.VC:
-
+                                setVC(true);
                                 break;
                             default:
                                 setIdentity(true);
@@ -200,7 +201,7 @@ function Component() {
                 break;
             case DOMAINS.DID: await resolveDid();
                 break;
-            case DOMAINS.VC: alert('Coming soon!') //await resolveDomain();
+            case DOMAINS.VC: await resolveDomain();
                 break;
             case DOMAINS.PSC: alert('Coming soon!') //await resolveDomain();
                 break;
@@ -246,6 +247,10 @@ function Component() {
             {
                 xpoints &&
                 <XPoints />
+            }
+            {
+                vc &&
+                <VerifiableCredentials />
             }
             {
                 is_admin?.verified && !is_admin.hideWallet &&

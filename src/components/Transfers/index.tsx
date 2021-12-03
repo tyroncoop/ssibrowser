@@ -96,6 +96,9 @@ function Component() {
                 case 'xsgd':
                     amount = input * 1e6;
                     break;
+                case 'xcad':
+                    amount = input * 1e18;
+                    break;
                 case 'zwbtc':
                     amount = input * 1e8;
                     break;
@@ -215,13 +218,14 @@ function Component() {
                                 }
                                     break;
                             }
+                            const _amount = String(donation);
 
                             alert(`You're about to submit a transaction to transfer ${input} ${currency} to ${user?.nft}.${user?.domain}. You're also donating ${donation} ZIL to donate.did, which gives you ${donation} xPoints!`);
                             await zilpay.call({
                                 contractAddress: logged_in.address,
                                 transition: txID,
                                 params: tx_params as unknown as Record<string, unknown>[],
-                                amount: String(donation)   //@todo-ux would u like to top up your wallet as well?
+                                amount: _amount   //@todo-ux would u like to top up your wallet as well?
                             })
                                 .then(res => {
                                     setTxID(res.ID);
@@ -310,6 +314,7 @@ function Component() {
                                             <option value="ZIL">ZIL</option>
                                             <option value="gZIL">gZIL</option>
                                             <option value="XSGD">XSGD</option>
+                                            <option value="XCAD">XCAD</option>
                                         </select>
                                     </div>
                                     <div className={styles.container}>

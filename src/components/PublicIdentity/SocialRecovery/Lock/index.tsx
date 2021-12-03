@@ -76,7 +76,7 @@ function Component() {
                     })
                     .catch(err => setError(err))
             } catch (error) {
-                setError('identity verification unsuccessful.')
+                setError('identity verification unsuccessful')
             }
         }
     };

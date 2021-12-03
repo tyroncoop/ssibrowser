@@ -133,7 +133,7 @@ export const resolve = async ({
             addr,
             'social_guardians'
         );
-        guardians = await resolveGuardians(social_recovery.result.social_guardians);
+        guardians = await resolveSubState(social_recovery.result.social_guardians);
     } catch (error) {
         throw new Error(
             ('no guardians found')
@@ -178,7 +178,7 @@ export const resolve = async ({
     };
 };
 
-async function resolveGuardians(object: any): Promise<any[]> {
+export async function resolveSubState(object: any): Promise<any[]> {
     const entries = Object.entries(object);
     const result: any[] = [];
     entries.forEach((value: [string, unknown]) => {

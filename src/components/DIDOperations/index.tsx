@@ -36,8 +36,8 @@ function Component() {
                     Available DID operations
                 </h3>
             }
-            <ul>
-                <li>
+            <section>
+                <div>
                     {
                         contract?.status === tyron.Sidetree.DIDStatus.Deployed &&
                         hideUpdate && hideRecover && hideRecovery && hideDeactivate &&
@@ -74,8 +74,8 @@ function Component() {
                             </div>
                         </div>
                     }
-                </li>
-                <li>
+                </div>
+                <div>
                     {
                         did_operational &&
                         hideCreate && hideRecover && hideRecovery && hideDeactivate && <>{
@@ -121,8 +121,8 @@ function Component() {
                             </div>
                         </>
                     }
-                </li>
-                <li>
+                </div>
+                <div>
                     {
                         did_operational &&
                         hideCreate && hideUpdate && hideRecovery && hideDeactivate &&
@@ -146,8 +146,8 @@ function Component() {
                             <NewDoc />
                         </div>
                     }
-                </li>
-                <li>
+                </div>
+                <div>
                     {
                         did_operational &&
                         hideCreate && hideUpdate && hideRecover && hideDeactivate &&
@@ -171,8 +171,8 @@ function Component() {
                             <DidSocialRecovery />
                         </div>
                     }
-                </li>
-                <li>
+                </div>
+                <div>
                     {
                         is_operational &&
                         contract?.status !== tyron.Sidetree.DIDStatus.Deployed &&
@@ -218,8 +218,8 @@ function Component() {
                             </p>
                         </>
                     }
-                </li>
-            </ul>
+                </div>
+            </section>
         </div >
     );
 }

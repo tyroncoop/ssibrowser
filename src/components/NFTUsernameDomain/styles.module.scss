@@ -1,16 +1,10 @@
-.mainContainer {
-    display: flexbox;
-    width: 110%;
-    margin-left: 3%;
-}
-
 .container {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 4%;
-    margin-bottom: 4%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .button {
@@ -41,4 +35,11 @@
 .username {
     text-transform: lowercase;
     color: yellow;
+}
+
+.error {
+    position: absolute !important;
+    left: 0%;
+    bottom: -10%;
+    display: inline-block;
 }

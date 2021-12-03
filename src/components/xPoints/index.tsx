@@ -72,21 +72,22 @@ function Component() {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '14%' }}>
-            <h1 style={{ textAlign: 'center' }}>
+            <h1 style={{ marginBottom: '7%' }}>
                 <span className={styles.username}>
                     x
                 </span>
-                POINTS
-            </h1>
-            <h1>
-                <span style={{ textTransform: 'lowercase', color: 'whitesmoke' }}>
-                    Raise <span className={styles.username}>Your Voice</span>
-                </span>{' '}
+                POINTS{' '}
+                <span className={styles.username}>
+                    dapp
+                </span>
             </h1>
             {
                 hideList &&
                 <div style={{ marginTop: '14%' }}>
-                    <h2>
+                    <h3 style={{ marginBottom: '7%' }}>
+                        Raise Your Voice!
+                    </h3>
+                    <div style={{ marginTop: '14%' }}>
                         {
                             hideAdd
                                 ? <button
@@ -117,7 +118,7 @@ function Component() {
                                     </button>
                                 </>
                         }
-                    </h2>
+                    </div>
                     {
                         !hideAdd &&
                         <div style={{ marginTop: '10%' }}>
@@ -150,7 +151,7 @@ function Component() {
             }
             {
                 hideAdd &&
-                <div style={{ marginLeft: '4%', marginTop: '8%' }}>
+                <div style={{ marginTop: '10%' }}>
                     <p>
                         coming soon!
                     </p>

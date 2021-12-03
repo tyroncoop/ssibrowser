@@ -41,3 +41,4 @@ export { default as DidUpdate } from './DIDOperations/DIDUpdate';
 export { default as SubmitUpdateDoc } from './DIDOperations/SubmitUpdateDoc';
 export { default as DidSocialRecovery } from './DIDOperations/DidSocialRecovery';
 export { default as SignVC } from './PublicIdentity/SignVC';
+export { default as VerifiableCredentials } from './VerifiableCredentials';
