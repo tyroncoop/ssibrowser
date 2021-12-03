@@ -7,6 +7,8 @@ import styles from './styles.module.scss';
 function Component() {
     const arConnect = useStore($arconnect);
 
+    const [hideT, setHideT] = useState(true);
+    const [tLegend, setTLegend] = useState('.treasury');
     const [hideVC, setHideVC] = useState(true);
     const [vcLegend, setVCLegend] = useState('.vc');
     const [hideDex, setHideDex] = useState(true);
@@ -19,7 +21,7 @@ function Component() {
     return (
         <div style={{ marginTop: '14%', textAlign: 'center' }}>
             {
-                hideTransfer && hideDex && hideStake && hideVC &&
+                hideTransfer && hideDex && hideStake && hideVC && hideT &&
                 <h3 style={{ marginBottom: '7%' }}>
                     Available <span style={{ textTransform: 'lowercase' }}>x</span>Wallet domains:
                 </h3>
@@ -29,7 +31,7 @@ function Component() {
                 <>
                     <div>
                         {
-                            hideStake && hideVC && <>{
+                            hideStake && hideVC && hideT && <>{
                                 hideDex
                                     ? <button
                                         type="button"
@@ -59,7 +61,7 @@ function Component() {
                     </div>
                     <div>
                         {
-                            hideDex && hideVC && <>{
+                            hideDex && hideVC && hideT && <>{
                                 hideStake
                                     ? <button
                                         type="button"
@@ -89,7 +91,7 @@ function Component() {
                     </div>
                     <div>
                         {
-                            hideDex && hideStake && <>{
+                            hideDex && hideStake && hideT && <>{
                                 hideVC
                                     ? <>
                                         <h4 style={{ marginTop: '10%' }}>
@@ -129,10 +131,48 @@ function Component() {
                             />
                         }
                     </div>
+                    <div>
+                        {
+                            hideDex && hideStake && hideVC && <>{
+                                hideT
+                                    ? <>
+                                        <button
+                                            type="button"
+                                            className={styles.button}
+                                            onClick={() => {
+                                                if (arConnect === null) {
+                                                    alert('To continue, connect your SSI Private Key: Click on Connect -> SSI Private Key')
+                                                } else {
+                                                    setHideT(false);
+                                                    setTLegend('back');
+                                                }
+                                            }}
+                                        >
+                                            <p className={styles.buttonBlueText}>
+                                                {tLegend}
+                                            </p>
+                                        </button>
+                                    </>
+                                    : <>
+                                        <h2>
+                                            <span style={{ color: 'lightblue' }}>PSC treasury</span>{' '}<span style={{ textTransform: 'lowercase' }}>x</span>Wallet domain
+                                        </h2>
+                                    </>
+                            }</>
+                        }
+                        {
+                            !hideT &&
+                            <NFTUsernameDomain
+                                {...{
+                                    domain: 'treasury',
+                                }}
+                            />
+                        }
+                    </div>
                 </>
             }
             {
-                hideDex && hideStake && hideVC &&
+                hideDex && hideStake && hideVC && hideT &&
                 hideTransfer &&
                 <div style={{ marginTop: '14%' }}>
                     <p>
