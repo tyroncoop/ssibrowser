@@ -1,48 +1,48 @@
 import React from 'react';
-// import { useStore } from 'effector-react';
+import { useStore } from 'effector-react';
 import { $isAdmin, updateIsAdmin } from '../src/store/admin';
-import styles from '../styles/AccessWallet.module.css';
+import styles from '../styles/AccessWallet.module.css'
 
 function AccessWallet() {
-    // const is_admin = useStore($isAdmin);
+    const is_admin = useStore($isAdmin);
 
-    // const handleShow = () => {
-    //     updateIsAdmin({
-    //         verified: true,
-    //         hideWallet: false,
-    //         legend: 'hide wallet'
-    //     })
-    // };
-    // const handleHide = () => {
-    //     updateIsAdmin({
-    //         verified: true,
-    //         hideWallet: true,
-    //         legend: 'access DID wallet'
-    //     })
-    // };
+    const handleShow = () => {
+        updateIsAdmin({
+            verified: true,
+            hideWallet: false,
+            legend: 'hide wallet'
+        })
+    };
+    const handleHide = () => {
+        updateIsAdmin({
+            verified: true,
+            hideWallet: true,
+            legend: 'access DID wallet'
+        })
+    };
 
     return (
         <>
             {
-                //is_admin?.verified && is_admin.hideWallet &&
+                is_admin?.verified && is_admin.hideWallet &&
                 <button
                     type="button"
                     className={styles.button}
-                >
+                    onClick={handleShow}>
                     <p className={styles.buttonShow}>
-
+                        {is_admin.legend}
                     </p>
                 </button>
             }
             {
-                //is_admin?.verified && !is_admin.hideWallet &&
+                is_admin?.verified && !is_admin.hideWallet &&
                 <button
                     type="button"
                     className={styles.button}
 
                 >
                     <p className={styles.buttonHide}>
-
+                        {is_admin.legend}
                     </p>
                 </button>
             }

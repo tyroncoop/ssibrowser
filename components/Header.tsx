@@ -2,6 +2,7 @@ import React from 'react';
 //import { SearchBar, Connect, SSIProtocol, FAQ, AccessWallet } from '../index';
 //import AccessWallet from '../components/AccessWallet';
 import Connect from '../components/Connect'
+import SSIProtocol from '../components/SSIProtocol';
 import FAQ from '../components/FAQ'
 
 function Header() {
@@ -16,6 +17,7 @@ function Header() {
                 </div>
             </div>
             <Connect />
+            <SSIProtocol />
             <FAQ />
         </>
     );
