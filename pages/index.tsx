@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-//import { Header, Footer } from './components';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 //import './styles/scss/application.scss';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <>
             <Head><title>SSI Browser</title></Head>
             <div id="wrapper">
-                {/* <Header /> */}
+                <Header />
                 <Footer />
             </div>
         </>
