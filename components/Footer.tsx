@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from '../styles/Footer.module.css'
 
 function Footer() {
     return (
-        <footer id="footer" style={{ marginLeft: '4%' }}>
+        <footer className={styles.footer} style={{ marginLeft: '4%' }}>
             <ul className="icons">
                 <li>
                     <a

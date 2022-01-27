@@ -1,5 +1,4 @@
 import React from 'react';
-//import styles from './styles.module.scss';
 import styles from '../styles/FAQ.module.css'
 
 function FAQ() {
