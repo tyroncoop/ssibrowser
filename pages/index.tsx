@@ -7,6 +7,7 @@ function App() {
     return (
         <>
             <Head><title>SSI Browser</title></Head>
+            <div id="bg"></div>
             <div id="wrapper">
                 <Header />
                 <Footer />
