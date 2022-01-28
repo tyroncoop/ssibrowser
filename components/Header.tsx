@@ -1,6 +1,7 @@
 import React from 'react';
 //import { SearchBar, Connect, SSIProtocol, FAQ, AccessWallet } from '../index';
 //import AccessWallet from '../components/AccessWallet';
+import SearchBar from '../components/SearchBar';
 import Connect from '../components/Connect'
 import SSIProtocol from '../components/SSIProtocol';
 import FAQ from '../components/FAQ'
@@ -11,7 +12,7 @@ function Header() {
             <div id="header">
                 <div className="content">
                     <div className="inner">
-                        {/* <SearchBar /> */}
+                        <SearchBar />
                         {/* <AccessWallet /> */}
                     </div>
                 </div>
