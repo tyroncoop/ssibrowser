@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import * as zcrypto from "@zilliqa-js/crypto";
 import { toast } from "react-toastify";
 import ZilpayIcon from "../../src/assets/logos/lg_zilpay.svg";
@@ -16,16 +17,37 @@ import {
 import { $net, updateNet } from "../../src/store/wallet-network";
 import { $contract } from "../../src/store/contract";
 import { updateIsAdmin } from "../../src/store/admin";
+import { $user, updateUser } from "../../src/store/user";
+import { connect, ConnectedProps } from "react-redux";
+import { hideSignInModal } from "../../src/app/actions";
+import { RootState } from "../../src/app/reducers";
 import Image from "next/image";
+
+const mapStateToProps = (state: RootState) => ({
+  modal: state.modal.signInModal,
+});
+
+const mapDispatchToProps = {
+  dispatchHideModal: hideSignInModal,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ModalProps = ConnectedProps<typeof connector>;
 
 let observer: any = null;
 let observerNet: any = null;
 let observerBlock: any = null;
 
-export const ZilPay: React.FC = () => {
+function ZilPay(props: ModalProps) {
+  const { dispatchHideModal } = props;
   const zil_address = useStore($wallet);
   const net = useStore($net);
+  const user = useStore($user);
+  const username = user?.name!;
+  const domain = user?.domain!;
   const [account, setAccount] = useState("");
+  const Router = useRouter();
 
   const transactions = useStore($transactions);
   const contract = useStore($contract);
@@ -58,6 +80,10 @@ export const ZilPay: React.FC = () => {
         const address = zp.wallet.defaultAccount;
         updateAddress(address);
         setAccount(address.base16);
+        if (window.location.pathname.replace("/", "").toLowerCase() === 'buynftusername') {
+          dispatchHideModal()
+          Router.push(`/${username}`)
+        }
         if (zil_address === null) {
           toast.info(`ZilPay account previously connected to: ${ address.bech32.slice(0, 5) }...${ address.bech32.slice(-9) }`, {
             position: "top-left",
@@ -291,4 +317,4 @@ export const ZilPay: React.FC = () => {
   );
 };
 
-export default ZilPay;
+export default connect(mapStateToProps, mapDispatchToProps)(ZilPay);
