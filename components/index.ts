@@ -29,7 +29,6 @@ export { default as Withdrawals } from "./DIDxWallet/Withdrawals";
 export { default as FAQ } from "./FAQ";
 export { default as SSIProtocol } from "./SSIProtocol";
 export { default as TyronDonate } from "./TyronDonate";
-export { default as AccessWallet } from "./AccessWallet";
 export { default as DIDOperations } from "./DIDOperations";
 export { default as NewDoc } from "./DIDOperations/NewDoc";
 export { default as SubmitNewDoc } from "./DIDOperations/SubmitNewDoc";

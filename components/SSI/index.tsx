@@ -8,7 +8,6 @@ import { $isAdmin, updateIsAdmin } from "../../src/store/admin";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import styles from "./styles.module.scss";
-import { AccessWallet } from "..";
 
 interface LayoutProps {
   children: ReactNode;
@@ -32,8 +31,15 @@ function Component(props: LayoutProps) {
   };
 
   useEffect(() => {
-    const url = window.location.pathname.replace('/', '')
-    setPath(url.split('/')[1])
+    const path = window.location.pathname.replace('/', '').split('/')[1]
+    setPath(path)
+
+    return () => {
+      if (path === 'xwallet' || path === 'funds' || path === 'recovery' || path === 'did') {
+        updateSSIInterface("");
+        resetWalletState();
+      }
+    }
   }, [setPath])
 
   return (
@@ -99,7 +105,6 @@ function Component(props: LayoutProps) {
               <></>
             )}
       </div>
-      <AccessWallet />
       <div
         style={{
           width: "100%",

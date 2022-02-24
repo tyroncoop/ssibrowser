@@ -133,11 +133,7 @@ function Component() {
                     status: result.status,
                   });
                   if (controller === zil_address?.base16.toLowerCase()) {
-                    if (
-                      path !== "" &&
-                      path !== "didxwallet" &&
-                      !is_admin?.verified
-                    ) {
+                    if (path !== "") {
                       updateIsAdmin({
                         verified: true,
                         hideWallet: true,
