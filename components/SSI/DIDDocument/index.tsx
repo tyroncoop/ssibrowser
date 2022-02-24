@@ -73,7 +73,7 @@ function Component() {
           })}
         {
           exists &&
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div
               className={styles.card}
               onClick={() => {
