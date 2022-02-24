@@ -59,13 +59,23 @@ function Component() {
       input.split("/")[1] === "recovery" ||
       input.split("/")[1] === "funds" ||
       input.split(".")[1] === "vc" ||
-      input.split(".")[1] === "treasury"
+      input.split(".")[1] === "treasury" ||
+      input.split(".")[1] === "did"
     ) {
       return false;
     } else {
       return true;
     }
   };
+
+  const checkDomain = () => {
+    const path = window.location.pathname.replace("/", "").toLowerCase();
+    if (path.split('.')[1] === 'did' || path.split('.')[1] === 'vc' || path.split('.')[1] === 'treasury') {
+      return true
+    } else {
+      return false
+    }
+  }
 
   const handleOnChange = ({
     currentTarget: { value },
@@ -105,8 +115,8 @@ function Component() {
 
   const resolveDid = async () => {
     const path = window.location.pathname.replace("/", "").toLowerCase();
-    const _username = checkPath() ? path : path.split('/')[1] === 'did' ?  path.split('/')[0] : path.split('.')[1] === 'vc' || path.split('.')[1] === 'treasury' ? path.split('.')[0] : username
-    const _domain = checkPath() ? 'did' : path.split('/')[1] === 'did' ?  'did' : path.split('.')[1] === 'vc' ? 'vc' : path.split('.')[1] === 'treasury' ? 'treasury' : domain
+    const _username = checkPath() ? path : checkDomain() ? path.split('.')[0] : path.split('/')[1] === 'did' ?  path.split('/')[0] : username
+    const _domain = checkPath() ? 'did' : checkDomain() ? path.split('.')[1] : path.split('/')[1] === 'did' ?  'did' : domain
     if (
       isValidUsername(_username) ||
       _username === "init" ||
@@ -266,10 +276,10 @@ function Component() {
     });
     const path = window.location.pathname.replace("/", "").toLowerCase();
     updateUser({
-      name: checkPath() ? path : path.split('/')[1] === 'did' ?  path.split('/')[0] : path.split('.')[1] === 'vc' || path.split('.')[1] === 'treasury' ? path.split('.')[0] : username,
-      domain: checkPath() ? 'did' : path.split('/')[1] === 'did' ?  'did' : path.split('.')[1] === 'vc' ? 'vc' : path.split('.')[1] === 'treasury' ? 'treasury' : domain
+      name: checkPath() ? path : checkDomain() ? path.split('.')[0] : path.split('/')[1] === 'did' ?  path.split('/')[0] : username,
+      domain: checkPath() ? 'did' : checkDomain() ? path.split('.')[1] : path.split('/')[1] === 'did' ?  'did' : domain
     });
-    switch (checkPath() ? 'did' : path.split('/')[1] === 'did' ?  'did' : path.split('.')[1] === 'vc' ? 'vc' : path.split('.')[1] === 'treasury' ? 'treasury' : domain) {
+    switch (checkPath() ? 'did' : checkDomain() ? path.split('.')[1] : path.split('/')[1] === 'did' ?  'did' : domain) {
       case DOMAINS.TYRON:
         if (VALID_SMART_CONTRACTS.includes(username))
           window.open(
