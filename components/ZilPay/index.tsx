@@ -199,7 +199,7 @@ function ZilPay(props: ModalProps) {
         updateTxList(JSON.parse(cache));
       }
     },
-    [zil_address]
+    [zil_address, dispatchHideModal, Router, username]
   );
   //@todo update when changing zilpay wallets
   const handleConnect = React.useCallback(async () => {
