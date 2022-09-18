@@ -14,11 +14,11 @@ function Component() {
             inputElement.focus();
         }
     }, []);
-    const doc = useStore($doc);
+    const dkms = useStore($doc)?.dkms;
     const arConnect = useStore($arconnect);
     const keyfile = useStore($keyfile);
 
-    const [input, setInput] = useState('');
+    // const [input, setInput] = useState('');
     const [inputB, setInputB] = useState('');
     const [msg, setMsg] = useState({});
 
@@ -30,25 +30,19 @@ function Component() {
 
     const [signature, setSignature] = useState('');
 
-    const handleInput = (event: { target: { value: any; }; }) => {
-        const input = event.target.value;
-        setInput(String(input).toLowerCase());
-    };
+    // const handleInput = (event: { target: { value: any; }; }) => {
+    //     const input = event.target.value;
+    //     setInput(String(input).toLowerCase());
+    // };
 
     const handleInputB = async (event: { target: { value: any; }; }) => {
         setError(''); setInputB(''); setHideSubmit(true)
         setLegend('continue'); setButton('button primary');
         const input = event.target.value;
         if (keyfile !== null) {
-            try {
-                const msg = await decryptData(input, keyfile)
-                setMsg(msg);
-                setInputB(input);
-            } catch (error) {
-                setError('could not decrypt')
-            }
+            setInputB(input);
         } else {
-            setError('connect keyfile')
+            setError('Connect keyfile')
         }
     };
     const handleOnKeyPress = ({
@@ -59,21 +53,25 @@ function Component() {
         }
     };
     const handleSave = async () => {
-        handleInputB;
-        if (inputB !== '') {
+        try {
+            const msg = await decryptData(inputB, keyfile)
+            setMsg(msg);
             setLegend('saved');
             setButton('button');
             setHideSubmit(false);
+        } catch (error) {
+            setError('could not decrypt')
         }
     };
 
     const handleSubmit = async () => {
         if (arConnect !== null) {
             try {
-                const encrypted_key = doc?.dkms.get('vc');
+                const encrypted_key = dkms.get('soul');
+                console.log('soul DID key', encrypted_key)
                 const private_key = await decryptKey(arConnect, encrypted_key);
                 const public_key = zcrypto.getPubKeyFromPrivateKey(private_key);
-                const hash = await HashString(input + inputB);
+                const hash = await HashString(inputB);
 
                 const signature = '0x' + zcrypto.sign(Buffer.from(hash, 'hex'), private_key, public_key);
                 setSignature(signature);
@@ -91,14 +89,14 @@ function Component() {
             {
                 signature === '' &&
                 <div className={styles.containerInput}>
-                    <input
+                    {/* <input
                         ref={callbackRef}
                         type="text"
                         placeholder="Type NFT Username without .did"
                         onChange={handleInput}
                         autoFocus
                         style={{ width: '60%' }}
-                    />
+                    /> */}
                     <input
                         ref={callbackRef}
                         type="text"

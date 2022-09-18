@@ -111,46 +111,46 @@ function Component() {
 
     const services__: tyron.DocumentModel.ServiceModel[] = [];
 
-    if (btc !== '') {
-        services__.push({
-            id: 'bitcoin',
-            endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
-            type: 'blockchain',
-            transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
-            uri: btc
-        });
-    }
+    // if (btc !== '') {
+    //     services__.push({
+    //         id: 'bitcoin',
+    //         endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
+    //         type: 'blockchain',
+    //         transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
+    //         uri: btc
+    //     });
+    // }
     if (twitter !== '') {
         let username = twitter;
         if (twitter.substr(0, 1) === '@') {
             username = twitter.substr(1)
         }
-        services__.push({
-            id: 'twitter',
-            endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
-            type: 'website',
-            transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
-            uri: username
-        });
+        // services__.push({
+        //     id: 'twitter',
+        //     endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
+        //     type: 'website',
+        //     transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
+        //     uri: username
+        // });
     }
-    if (github !== '') {
-        services__.push({
-            id: 'github',
-            endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
-            type: 'website',
-            transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
-            uri: github
-        });
-    }
-    if (phoneNumber !== 0) {
-        services__.push({
-            id: 'phonenumber',
-            endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
-            type: 'phonenumber',
-            transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
-            uri: String(phoneNumber)
-        });
-    }
+    // if (github !== '') {
+    //     services__.push({
+    //         id: 'github',
+    //         endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
+    //         type: 'website',
+    //         transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
+    //         uri: github
+    //     });
+    // }
+    // if (phoneNumber !== 0) {
+    //     // services__.push({
+    //     //     id: 'phonenumber',
+    //     //     endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
+    //     //     type: 'phonenumber',
+    //     //     transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
+    //     //     uri: String(phoneNumber)
+    //     // });
+    // }
 
     const handleContinue = async () => {
         setError('');
@@ -158,15 +158,15 @@ function Component() {
         if (services.length !== 0) {
             for (let i = 0; i < services.length; i += 1) {
                 const this_service = services[i];
-                if (this_service[0] !== '' && this_service[1] !== '') {
-                    _services.push({
-                        id: this_service[0],
-                        endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
-                        type: 'website',
-                        transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
-                        uri: this_service[1]
-                    })
-                }
+                // if (this_service[0] !== '' && this_service[1] !== '') {
+                //     _services.push({
+                //         id: this_service[0],
+                //         endpoint: tyron.DocumentModel.ServiceEndpoint.Web2Endpoint,
+                //         type: 'website',
+                //         transferProtocol: tyron.DocumentModel.TransferProtocol.Https,
+                //         uri: this_service[1]
+                //     })
+                // }
             }
         }
         if (_services.length !== input) {
@@ -218,13 +218,13 @@ function Component() {
         if (servicesB.length !== 0) {
             for (let i = 0; i < servicesB.length; i += 1) {
                 const this_service = servicesB[i];
-                if (this_service[0] !== '' && this_service[1] !== '') {
-                    _services.push({
-                        id: this_service[0],
-                        endpoint: tyron.DocumentModel.ServiceEndpoint.Web3Endpoint,
-                        address: this_service[1]
-                    })
-                }
+                // if (this_service[0] !== '' && this_service[1] !== '') {
+                //     _services.push({
+                //         id: this_service[0],
+                //         endpoint: tyron.DocumentModel.ServiceEndpoint.Web3Endpoint,
+                //         address: this_service[1]
+                //     })
+                // }
             }
         }
         if (_services.length !== inputB) {
