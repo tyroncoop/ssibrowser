@@ -177,7 +177,7 @@ function Component() {
                             tx = await tx.confirm(res.ID)
                             if (tx.isConfirmed()) {
                                 dispatch(setTxStatusLoading('confirmed'))
-                                const txUrl = `https://v2.viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
+                                const txUrl = `https://viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
                                 webHook(txUrl, motion)
                                 window.open(txUrl)
                                 updateNewMotionsModal(false)

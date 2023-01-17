@@ -289,7 +289,7 @@ function Component() {
                             dispatch(setTxStatusLoading('confirmed'))
                             setTimeout(() => {
                                 window.open(
-                                    `https://v2.viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
+                                    `https://viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
                                 )
                             }, 1000)
                             const txn = await tyron.Init.default.contract(
@@ -635,7 +635,7 @@ function Component() {
                                             >
                                                 <a
                                                     className={styles.txtDomain}
-                                                    href={`https://v2.viewblock.io/zilliqa/address/${loginInfo?.address}?network=${net}`}
+                                                    href={`https://viewblock.io/zilliqa/address/${loginInfo?.address}?network=${net}`}
                                                     rel="noreferrer"
                                                     target="_blank"
                                                 >
@@ -938,7 +938,7 @@ function Component() {
                                     }}
                                 >
                                     <a
-                                        href={`https://v2.viewblock.io/zilliqa/address/${loginInfo.zilAddr?.bech32}?network=${net}`}
+                                        href={`https://viewblock.io/zilliqa/address/${loginInfo.zilAddr?.bech32}?network=${net}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className={styles.txtAddress}
@@ -974,7 +974,7 @@ function Component() {
                                             <p
                                                 onClick={() =>
                                                     window.open(
-                                                        `https://v2.viewblock.io/arweave/address/${loginInfo.arAddr}`
+                                                        `https://viewblock.io/arweave/address/${loginInfo.arAddr}`
                                                     )
                                                 }
                                                 className={styles.txtAddress}
@@ -990,11 +990,10 @@ function Component() {
                                     >
                                         <button
                                             onClick={connect}
-                                            className={`button small ${
-                                                isLight
+                                            className={`button small ${isLight
                                                     ? toastTheme(isLight)
                                                     : 'secondary'
-                                            }`}
+                                                }`}
                                         >
                                             <span
                                                 className={
@@ -1093,7 +1092,7 @@ function Component() {
                                                         onClick={continueLogIn}
                                                     >
                                                         {loading &&
-                                                        existingAddr === '' ? (
+                                                            existingAddr === '' ? (
                                                             <>{spinner}</>
                                                         ) : (
                                                             <div className="continueBtn">
@@ -1136,7 +1135,7 @@ function Component() {
                                                         }
                                                         className={
                                                             existingUsername !==
-                                                            ''
+                                                                ''
                                                                 ? styles.inputDisabled
                                                                 : styles.input
                                                         }
@@ -1149,7 +1148,7 @@ function Component() {
                                                         onClick={continueLogIn}
                                                     >
                                                         {loading &&
-                                                        existingUsername ===
+                                                            existingUsername ===
                                                             '' ? (
                                                             <>{spinner}</>
                                                         ) : (

@@ -86,22 +86,22 @@ function TransactionStatus(props: ModalProps) {
                 {loading === 'true'
                     ? t('SIGN THE TRANSACTION TO SEND IT TO THE BLOCKCHAIN')
                     : loading === 'submitted'
-                    ? t(
-                          'TRANSACTION PROCESSED ON THE ZILLIQA BLOCKCHAIN, PLEASE WAIT'
-                      )
-                    : loading === 'confirmed'
-                    ? t('TRANSACTION SUCCESSFULLY CONFIRMED!')
-                    : loading === 'failed'
-                    ? t('TRANSACTION FAILED')
-                    : loading === 'rejected'
-                    ? t('TRANSACTION REJECTED BY THE USER')
-                    : t('SIGN THE TRANSACTION TO SEND IT TO THE BLOCKCHAIN')}
+                        ? t(
+                            'TRANSACTION PROCESSED ON THE ZILLIQA BLOCKCHAIN, PLEASE WAIT'
+                        )
+                        : loading === 'confirmed'
+                            ? t('TRANSACTION SUCCESSFULLY CONFIRMED!')
+                            : loading === 'failed'
+                                ? t('TRANSACTION FAILED')
+                                : loading === 'rejected'
+                                    ? t('TRANSACTION REJECTED BY THE USER')
+                                    : t('SIGN THE TRANSACTION TO SEND IT TO THE BLOCKCHAIN')}
             </h5>
             {loading !== 'true' && loading !== 'rejected' && (
                 <h5 className={styles.txt}>
                     ID:{' '}
                     <a
-                        href={`https://v2.viewblock.io/zilliqa/tx/${txId}?network=${net}`}
+                        href={`https://viewblock.io/zilliqa/tx/${txId}?network=${net}`}
                         rel="noreferrer"
                         target="_blank"
                     >

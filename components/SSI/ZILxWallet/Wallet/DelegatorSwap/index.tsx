@@ -216,7 +216,7 @@ function DelegatorSwap() {
                     dispatch(setTxStatusLoading('confirmed'))
                     setTimeout(() => {
                         window.open(
-                            `https://v2.viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
+                            `https://viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
                         )
                     }, 1000)
                 } else if (tx.isRejected()) {
@@ -342,28 +342,28 @@ function DelegatorSwap() {
                                     {currentD !== 'zilliqa' && <Donate />}
                                     {(donation !== null ||
                                         currentD === 'zilliqa') && (
-                                        <>
-                                            <div
-                                                onClick={() =>
-                                                    handleSubmit(
-                                                        'requestDelegatorSwap'
-                                                    )
-                                                }
-                                                style={{
-                                                    width: '100%',
-                                                    marginTop: '24px',
-                                                }}
-                                                className={actionBtn}
-                                            >
-                                                <div>
-                                                    REQUEST DELEGATOR SWAP
+                                            <>
+                                                <div
+                                                    onClick={() =>
+                                                        handleSubmit(
+                                                            'requestDelegatorSwap'
+                                                        )
+                                                    }
+                                                    style={{
+                                                        width: '100%',
+                                                        marginTop: '24px',
+                                                    }}
+                                                    className={actionBtn}
+                                                >
+                                                    <div>
+                                                        REQUEST DELEGATOR SWAP
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className={styles.gasTxt}>
-                                                {t('GAS_AROUND')} 1-2 ZIL
-                                            </div>
-                                        </>
-                                    )}
+                                                <div className={styles.gasTxt}>
+                                                    {t('GAS_AROUND')} 1-2 ZIL
+                                                </div>
+                                            </>
+                                        )}
                                 </>
                             ) : (
                                 <></>

@@ -325,7 +325,7 @@ function Component({
                             if (tx.isConfirmed()) {
                                 dispatch(setTxStatusLoading('confirmed'))
                                 window.open(
-                                    `https://v2.viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
+                                    `https://viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
                                 )
                                 if (issuerName === 'tyron') {
                                     webHookIvms(message)
@@ -532,7 +532,7 @@ function Component({
                             placeholder="soul@tyron.did"
                             onChange={onChangeIssuer}
                             onKeyPress={handleOnKeyPressIssuer}
-                            // value={ }
+                        // value={ }
                         />
                         <div className={styles.arrowWrapper}>
                             <div

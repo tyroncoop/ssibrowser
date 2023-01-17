@@ -188,7 +188,7 @@ function Component() {
                             dispatch(setTxStatusLoading('confirmed'))
                             updateDonation(null)
                             window.open(
-                                `https://v2.viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
+                                `https://viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
                             )
                             let addr = deploy[0].ContractAddress
                             addr = zcrypto.toChecksumAddress(addr)
@@ -270,7 +270,7 @@ function Component() {
                             dispatch(setTxStatusLoading('confirmed'))
                             updateDonation(null)
                             window.open(
-                                `https://v2.viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
+                                `https://viewblock.io/zilliqa/tx/${deploy[0].ID}?network=${net}`
                             )
                             let addr = deploy[0].ContractAddress
                             addr = zcrypto.toChecksumAddress(addr)
@@ -447,7 +447,7 @@ function Component() {
                                 dispatch(setTxStatusLoading('confirmed'))
                                 updateDonation(null)
                                 window.open(
-                                    `https://v2.viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
+                                    `https://viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
                                 )
                                 // update prev is needed here?: yes, it would be better to use global navigation
                                 // we already use navigate() on resolveDid() and that's enough
@@ -615,76 +615,76 @@ function Component() {
                                                 <>
                                                     {domainLegend2 ===
                                                         'save' && (
-                                                        <>
-                                                            {val ===
-                                                            'ZIL Staking xWallet' ? (
-                                                                <div
-                                                                    className={
-                                                                        isLight
-                                                                            ? 'actionBtnBlueLight'
-                                                                            : 'actionBtnBlue'
-                                                                    }
-                                                                    style={{
-                                                                        margin: '10%',
-                                                                    }}
-                                                                    onClick={
-                                                                        handleDeploy
-                                                                    }
-                                                                >
-                                                                    <span
+                                                            <>
+                                                                {val ===
+                                                                    'ZIL Staking xWallet' ? (
+                                                                    <div
+                                                                        className={
+                                                                            isLight
+                                                                                ? 'actionBtnBlueLight'
+                                                                                : 'actionBtnBlue'
+                                                                        }
                                                                         style={{
-                                                                            textTransform:
-                                                                                'none',
+                                                                            margin: '10%',
+                                                                        }}
+                                                                        onClick={
+                                                                            handleDeploy
+                                                                        }
+                                                                    >
+                                                                        <span
+                                                                            style={{
+                                                                                textTransform:
+                                                                                    'none',
+                                                                            }}
+                                                                        >
+                                                                            New
+                                                                            ZILxWallet
+                                                                        </span>
+                                                                    </div>
+                                                                ) : (
+                                                                    <div
+                                                                        className={
+                                                                            isLight
+                                                                                ? 'actionBtnLight'
+                                                                                : 'actionBtn'
+                                                                        }
+                                                                        style={{
+                                                                            margin: '10%',
+                                                                        }}
+                                                                        onClick={() => {
+                                                                            //if (net === 'testnet') {
+                                                                            handleDeployVC()
+                                                                            // } else {
+                                                                            //     toast.warn(
+                                                                            //         'Only available on testnet.'
+                                                                            //     ),
+                                                                            //         {
+                                                                            //             position: 'top-right',
+                                                                            //             autoClose: 2000,
+                                                                            //             hideProgressBar: false,
+                                                                            //             closeOnClick: true,
+                                                                            //             pauseOnHover: true,
+                                                                            //             draggable: true,
+                                                                            //             progress: undefined,
+                                                                            //             theme: toastTheme(isLight),
+                                                                            //             toastId: 3,
+                                                                            //         }
+                                                                            // }
                                                                         }}
                                                                     >
-                                                                        New
-                                                                        ZILxWallet
-                                                                    </span>
-                                                                </div>
-                                                            ) : (
-                                                                <div
-                                                                    className={
-                                                                        isLight
-                                                                            ? 'actionBtnLight'
-                                                                            : 'actionBtn'
-                                                                    }
-                                                                    style={{
-                                                                        margin: '10%',
-                                                                    }}
-                                                                    onClick={() => {
-                                                                        //if (net === 'testnet') {
-                                                                        handleDeployVC()
-                                                                        // } else {
-                                                                        //     toast.warn(
-                                                                        //         'Only available on testnet.'
-                                                                        //     ),
-                                                                        //         {
-                                                                        //             position: 'top-right',
-                                                                        //             autoClose: 2000,
-                                                                        //             hideProgressBar: false,
-                                                                        //             closeOnClick: true,
-                                                                        //             pauseOnHover: true,
-                                                                        //             draggable: true,
-                                                                        //             progress: undefined,
-                                                                        //             theme: toastTheme(isLight),
-                                                                        //             toastId: 3,
-                                                                        //         }
-                                                                        // }
-                                                                    }}
-                                                                >
-                                                                    <span
-                                                                        style={{
-                                                                            textTransform:
-                                                                                'none',
-                                                                        }}
-                                                                    >
-                                                                        NEW
-                                                                        SBTxWallet
-                                                                    </span>
-                                                                </div>
-                                                            )}
-                                                        </>
-                                                    )}
+                                                                        <span
+                                                                            style={{
+                                                                                textTransform:
+                                                                                    'none',
+                                                                            }}
+                                                                        >
+                                                                            NEW
+                                                                            SBTxWallet
+                                                                        </span>
+                                                                    </div>
+                                                                )}
+                                                            </>
+                                                        )}
                                                     {domainLegend2 ===
                                                         'saved' && <Donate />}
                                                     {domainLegend2 ===
@@ -784,7 +784,7 @@ function Component() {
                                                     <div
                                                         className={
                                                             domainLegend2 ===
-                                                            'save'
+                                                                'save'
                                                                 ? 'continueBtn'
                                                                 : ''
                                                         }
@@ -793,7 +793,7 @@ function Component() {
                                                         }}
                                                     >
                                                         {domainLegend2 ===
-                                                        'save' ? (
+                                                            'save' ? (
                                                             <Image
                                                                 src={
                                                                     ContinueArrow

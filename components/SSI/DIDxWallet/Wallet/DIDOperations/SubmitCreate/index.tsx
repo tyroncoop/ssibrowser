@@ -128,7 +128,7 @@ function Component({
                             dispatch(setTxStatusLoading('confirmed'))
                             updateDonation(null)
                             window.open(
-                                `https://v2.viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
+                                `https://viewblock.io/zilliqa/tx/${res.ID}?network=${net}`
                             )
                             navigate(
                                 `/${domainNavigate}${resolvedInfo.name}/didx/doc`

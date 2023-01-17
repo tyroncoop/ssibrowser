@@ -174,7 +174,7 @@ function Component(props: InputType) {
                                 style={{
                                     textTransform: 'lowercase',
                                 }}
-                                href={`https://v2.viewblock.io/zilliqa/address/${loginInfo.zilAddr?.bech32}?network=${net}`}
+                                href={`https://viewblock.io/zilliqa/address/${loginInfo.zilAddr?.bech32}?network=${net}`}
                                 rel="noreferrer"
                                 target="_blank"
                             >
@@ -185,7 +185,7 @@ function Component(props: InputType) {
                                 style={{
                                     textTransform: 'lowercase',
                                 }}
-                                href={`https://v2.viewblock.io/zilliqa/address/${originator_address?.value}?network=${net}`}
+                                href={`https://viewblock.io/zilliqa/address/${originator_address?.value}?network=${net}`}
                                 rel="noreferrer"
                                 target="_blank"
                             >
@@ -205,7 +205,7 @@ function Component(props: InputType) {
                             {loadingInfoBal ? (
                                 <Spinner />
                             ) : infoBal === null &&
-                              currency.toLowerCase() === 'zil' ? (
+                                currency.toLowerCase() === 'zil' ? (
                                 <div
                                     onClick={() => updateShowZilpay(true)}
                                     style={{ marginTop: '10px' }}
