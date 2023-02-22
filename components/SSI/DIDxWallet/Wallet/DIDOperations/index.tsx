@@ -558,8 +558,8 @@ function Component() {
                                     </div>
                                 )}
                                 {selectedAddress === 'SSI' ||
-                                    (selectedAddress === 'ADDR' &&
-                                        address !== '') ? (
+                                (selectedAddress === 'ADDR' &&
+                                    address !== '') ? (
                                     <div style={{ marginTop: '5%' }}>
                                         <p className={styles.txt}>
                                             {t(

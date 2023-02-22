@@ -137,7 +137,7 @@ function Component() {
                                     doc?.map((res: any) => {
                                         if (
                                             res[0] !==
-                                            'Decentralized identifier' &&
+                                                'Decentralized identifier' &&
                                             res[0] !== 'DID services'
                                         ) {
                                             return (

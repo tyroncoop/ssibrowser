@@ -709,12 +709,12 @@ function Component() {
                                 </div>
                             )}
                             {(source === 'zilliqa' && currency !== 'ZIL') ||
-                                // (source === 'zilliqa' &&
-                                //     currency === 'ZIL' &&
-                                //     inputB !== '')
-                                // ||
-                                (source === 'DIDxWallet' &&
-                                    recipientType === 'addr') ? (
+                            // (source === 'zilliqa' &&
+                            //     currency === 'ZIL' &&
+                            //     inputB !== '')
+                            // ||
+                            (source === 'DIDxWallet' &&
+                                recipientType === 'addr') ? (
                                 <div className={styles.containerInput}>
                                     <div className={styles.wrapperSelector}>
                                         <input

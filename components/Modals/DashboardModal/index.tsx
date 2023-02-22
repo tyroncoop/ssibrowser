@@ -990,10 +990,11 @@ function Component() {
                                     >
                                         <button
                                             onClick={connect}
-                                            className={`button small ${isLight
+                                            className={`button small ${
+                                                isLight
                                                     ? toastTheme(isLight)
                                                     : 'secondary'
-                                                }`}
+                                            }`}
                                         >
                                             <span
                                                 className={
@@ -1092,7 +1093,7 @@ function Component() {
                                                         onClick={continueLogIn}
                                                     >
                                                         {loading &&
-                                                            existingAddr === '' ? (
+                                                        existingAddr === '' ? (
                                                             <>{spinner}</>
                                                         ) : (
                                                             <div className="continueBtn">
@@ -1135,7 +1136,7 @@ function Component() {
                                                         }
                                                         className={
                                                             existingUsername !==
-                                                                ''
+                                                            ''
                                                                 ? styles.inputDisabled
                                                                 : styles.input
                                                         }
@@ -1148,7 +1149,7 @@ function Component() {
                                                         onClick={continueLogIn}
                                                     >
                                                         {loading &&
-                                                            existingUsername ===
+                                                        existingUsername ===
                                                             '' ? (
                                                             <>{spinner}</>
                                                         ) : (

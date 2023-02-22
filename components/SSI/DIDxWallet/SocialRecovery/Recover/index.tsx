@@ -431,8 +431,8 @@ function Component() {
                                     loadingInput
                                         ? ''
                                         : legendB.toUpperCase() === 'CONTINUE'
-                                            ? 'continueBtn'
-                                            : ''
+                                        ? 'continueBtn'
+                                        : ''
                                 }
                                 onClick={handleContinue}
                             >
@@ -441,7 +441,7 @@ function Component() {
                                 ) : (
                                     <>
                                         {legendB.toUpperCase() ===
-                                            'CONTINUE' ? (
+                                        'CONTINUE' ? (
                                             <Image
                                                 width={50}
                                                 height={50}

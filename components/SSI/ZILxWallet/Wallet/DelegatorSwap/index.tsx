@@ -342,28 +342,28 @@ function DelegatorSwap() {
                                     {currentD !== 'zilliqa' && <Donate />}
                                     {(donation !== null ||
                                         currentD === 'zilliqa') && (
-                                            <>
-                                                <div
-                                                    onClick={() =>
-                                                        handleSubmit(
-                                                            'requestDelegatorSwap'
-                                                        )
-                                                    }
-                                                    style={{
-                                                        width: '100%',
-                                                        marginTop: '24px',
-                                                    }}
-                                                    className={actionBtn}
-                                                >
-                                                    <div>
-                                                        REQUEST DELEGATOR SWAP
-                                                    </div>
+                                        <>
+                                            <div
+                                                onClick={() =>
+                                                    handleSubmit(
+                                                        'requestDelegatorSwap'
+                                                    )
+                                                }
+                                                style={{
+                                                    width: '100%',
+                                                    marginTop: '24px',
+                                                }}
+                                                className={actionBtn}
+                                            >
+                                                <div>
+                                                    REQUEST DELEGATOR SWAP
                                                 </div>
-                                                <div className={styles.gasTxt}>
-                                                    {t('GAS_AROUND')} 1-2 ZIL
-                                                </div>
-                                            </>
-                                        )}
+                                            </div>
+                                            <div className={styles.gasTxt}>
+                                                {t('GAS_AROUND')} 1-2 ZIL
+                                            </div>
+                                        </>
+                                    )}
                                 </>
                             ) : (
                                 <></>

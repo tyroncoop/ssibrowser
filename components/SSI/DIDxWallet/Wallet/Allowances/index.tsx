@@ -394,7 +394,7 @@ function Component() {
                                                         >
                                                             <div>
                                                                 {menu ===
-                                                                    'increase'
+                                                                'increase'
                                                                     ? 'Increase'
                                                                     : 'Decrease'}{' '}
                                                                 Allowance

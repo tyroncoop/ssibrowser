@@ -516,7 +516,7 @@ function Component() {
         }
     }
 
-    const listDomains = ['ZIL Staking xWallet', 'Soulbound xWallet'] // to add further xWallets
+    // const listDomains = ['ZIL Staking xWallet', 'Soulbound xWallet'] // to add further xWallets
 
     return (
         <div style={{ textAlign: 'center' }}>
@@ -573,7 +573,7 @@ function Component() {
                         )}
                         <div className={styles.content}>
                             <div className={styles.cardWrapper}>
-                                {listDomains.map((val, i) => (
+                                {/* {listDomains.map((val, i) => (
                                     <div
                                         key={i}
                                         className={styles.cardActiveWrapper}
@@ -725,7 +725,7 @@ function Component() {
                                             </div>
                                         )}
                                     </div>
-                                ))}
+                                ))} */}
                                 <div className={styles.cardActiveWrapper}>
                                     <div
                                         onClick={() => {
@@ -784,7 +784,7 @@ function Component() {
                                                     <div
                                                         className={
                                                             domainLegend2 ===
-                                                                'save'
+                                                            'save'
                                                                 ? 'continueBtn'
                                                                 : ''
                                                         }
@@ -793,7 +793,7 @@ function Component() {
                                                         }}
                                                     >
                                                         {domainLegend2 ===
-                                                            'save' ? (
+                                                        'save' ? (
                                                             <Image
                                                                 src={
                                                                     ContinueArrow
