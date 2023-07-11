@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import * as tyron from 'tyron';
 import {
     SMART_CONTRACTS_URLS,
     VALID_SMART_CONTRACTS
@@ -85,8 +86,10 @@ function Component() {
                         setXpoints(true);
                     } else {
                         try {
+                            console.log('ADDR', addr)
+                            // const addr = '0xd9aec2cd37ab1221c1d40b9e9f0cd046dbe71bb7'
                             await resolve({ net, addr })
-                                .then(result => {
+                                .then(async result => {
                                     setIdentity(true);
                                     const controller = (result.controller).toLowerCase();
                                     updateContract({
@@ -107,11 +110,21 @@ function Component() {
                                             legend: 'access DID wallet'
                                         });
                                     }
+
+                                    let network = tyron.DidScheme.NetworkNamespace.Mainnet;
+                                    if (net === 'testnet') {
+                                        network = tyron.DidScheme.NetworkNamespace.Testnet;
+                                    }
+                                    const init = new tyron.ZilliqaInit.default(network);
+                                    const dkms_ = await init.API.blockchain.getSmartContractSubState(
+                                        addr,
+                                        'dkms'
+                                    );
                                     updateDoc({
                                         did: result.did,
                                         version: result.version,
                                         doc: result.doc,
-                                        dkms: result.dkms,
+                                        dkms: dkms_.result.dkms,
                                         guardians: result.guardians
                                     })
                                 }).catch(err => { throw err })
@@ -132,6 +145,7 @@ function Component() {
         await fetchAddr({ net, username, domain: 'did' })
             .then(async addr => {
                 const result = await resolve({ net, addr });
+                // console.log('resolution', JSON.stringify(result, null, 2))
                 await fetchAddr({ net, username, domain })
                     .then(async (domain_addr) => {
                         const controller = result.controller;
@@ -189,30 +203,31 @@ function Component() {
             nft: username,
             domain: domain
         });
-        switch (domain) {
-            case DOMAINS.TYRON:
-                if (VALID_SMART_CONTRACTS.includes(username))
-                    window.open(
-                        SMART_CONTRACTS_URLS[
-                        username as unknown as keyof typeof SMART_CONTRACTS_URLS
-                        ]
-                    );
-                else setError('invalid smart contract');
-                break;
-            case DOMAINS.DID: await resolveDid();
-                break;
-            case DOMAINS.VC: await resolveDomain();
-                break;
-            case DOMAINS.PSC: alert('Coming soon!') //await resolveDomain();
-                break;
-            case DOMAINS.DEX: await resolveDomain();
-                break;
-            case DOMAINS.STAKE: await resolveDomain();
-                break;
-            default:
-                setError('invalid domain.')
-                break
-        }
+        await resolveDid()
+        // switch (domain) {
+        //     case DOMAINS.TYRON:
+        //         if (VALID_SMART_CONTRACTS.includes(username))
+        //             window.open(
+        //                 SMART_CONTRACTS_URLS[
+        //                 username as unknown as keyof typeof SMART_CONTRACTS_URLS
+        //                 ]
+        //             );
+        //         else setError('invalid smart contract');
+        //         break;
+        //     case DOMAINS.DID: await resolveDid();
+        //         break;
+        //     case DOMAINS.VC: await resolveDomain();
+        //         break;
+        //     case DOMAINS.PSC: alert('Coming soon!') //await resolveDomain();
+        //         break;
+        //     case DOMAINS.DEX: await resolveDomain();
+        //         break;
+        //     case DOMAINS.STAKE: await resolveDomain();
+        //         break;
+        //     default:
+        //         setError('invalid domain.')
+        //         break
+        // }
         setLoading(false);
     };
 

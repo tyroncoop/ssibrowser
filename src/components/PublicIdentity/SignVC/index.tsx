@@ -14,7 +14,16 @@ function Component() {
             inputElement.focus();
         }
     }, []);
+
     const dkms = useStore($doc)?.dkms;
+    let soul_key = ''
+
+    Object.entries(dkms).forEach(([key, value]) => {
+        if (key === 'soul') {
+            soul_key = value as string//{ key, value }; // Store the matching key-value pair
+        }
+    });
+    console.log(soul_key)
     const arConnect = useStore($arconnect);
     const keyfile = useStore($keyfile);
 
@@ -67,14 +76,19 @@ function Component() {
     const handleSubmit = async () => {
         if (arConnect !== null) {
             try {
-                const encrypted_key = dkms.get('soul');
-                console.log('soul DID key', encrypted_key)
-                const private_key = await decryptKey(arConnect, encrypted_key);
+                console.log('arconnect')
+                // const encrypted_key = dkms.get('soul');
+                console.log('soul DID key', soul_key!)
+                const private_key = await decryptKey(arConnect, soul_key!);
                 const public_key = zcrypto.getPubKeyFromPrivateKey(private_key);
-                const hash = await HashString(inputB);
+                console.log(public_key)
 
-                const signature = '0x' + zcrypto.sign(Buffer.from(hash, 'hex'), private_key, public_key);
-                setSignature(signature);
+                const hash_ = await HashString(inputB);
+                console.log(hash_)
+
+                const signature_ = '0x' + zcrypto.sign(Buffer.from(hash_, 'hex'), private_key, public_key);
+                setSignature(signature_);
+                console.log('sig_', signature_)
             } catch (error) {
                 setError('identity verification unsuccessful')
             }
